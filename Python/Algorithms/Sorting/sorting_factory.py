@@ -7,8 +7,9 @@ from Algorithms.Sorting.merge_sort import MergeSort
 from Algorithms.Sorting.quick_sort import QuickSort
 from Algorithms.Sorting.selection_sort import SelectionSort
 from Algorithms.Sorting.heap_sort import HeapSort
-from Algorithms.Sorting.counting_sort import CountingSort
-from Algorithms.Sorting.radix_sort import RadixSort
+from Algorithms.Sorting.sorter import Sorter
+# from Algorithms.Sorting.counting_sort import CountingSort
+# from Algorithms.Sorting.radix_sort import RadixSort
 
 
 class SortingAlgorithm(Enum):
@@ -44,10 +45,3 @@ class SortingFactory():
         #     return RadixSort()
         else:
             raise ValueError("Invalid sorting algorithm")
-
-class Sorter():
-    def sort(self, array: List):
-        raise NotImplementedError()
-    
-    def swap(self, array: List, idx1: int, idx2: int):
-        array[idx1], array[idx2] = array[idx2], array[idx1]

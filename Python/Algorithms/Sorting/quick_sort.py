@@ -1,20 +1,22 @@
 from typing import List
 
-from Algorithms.Sorting.sorting_factory import Sorter
+from Algorithms.Sorting.sorter import Sorter
 
 
 class QuickSort(Sorter):
-    def sort(self, array: List):
+    def sort(self, array: List) -> List:
         array_size = len(array)
-        self.quick_sort(array, 0, array_size)
+        self.quick_sort(array, 0, array_size - 1)
+        return array
 
-    def quick_sort(self, array: List, low: int, high: int):
+    def quick_sort(self, array: List, low: int, high: int) -> None:
         if low < high:
             partition_index = self.partition(array, low, high)
             self.quick_sort(array, low, partition_index - 1)
             self.quick_sort(array, partition_index + 1, high)
 
-    def partition(self, array: List, low: int, high: int):
+    @staticmethod
+    def partition(array: List, low: int, high: int) -> int:
         pivot = array[high]
         ptr = low - 1
         for idx in range(low, high):
@@ -24,4 +26,3 @@ class QuickSort(Sorter):
 
         array[ptr + 1], array[high] = array[high], array[ptr + 1]
         return ptr + 1
-        

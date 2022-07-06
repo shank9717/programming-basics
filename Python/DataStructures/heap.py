@@ -1,7 +1,7 @@
 from typing import List
 from DataStructures.tree_node import BinaryTreeNode
 
-class Heap():
+class Heap:
     def __init__(self, array: List):
         self.array = array
         self.heap_size = len(array)
@@ -14,7 +14,7 @@ class Heap():
         return main_node
 
     def insert(self, num: int):
-        ## Add num to array
+        # Add num to array
         self.array.append(num)
         self.heap_size += 1
     
@@ -45,9 +45,6 @@ class MaxHeap(Heap):
         for idx in range(self.heap_size // 2 - 1, -1, -1):
             self.max_heapify(idx)
 
-    def max_heapify(self):
-        self.max_heapify(0)
-
     def max_heapify(self, idx: int):
         # This step would be log(n) time since it is called from build_max_heap() and it turns out that the children are already max heaps
         if idx < self.heap_size:
@@ -66,7 +63,7 @@ class MaxHeap(Heap):
     def insert(self, num):
         # This would be log(N) time
         self.insert(num)
-        self.max_heapify()
+        self.max_heapify(0)
     
     def max(self):
         return self.array[0]
@@ -79,7 +76,7 @@ class MaxHeap(Heap):
         self.array[0] = self.array[self.heap_size - 1]
         self.array.pop()
         self.heap_size -= 1
-        self.max_heapify()
+        self.max_heapify(0)
         return max_num
     
 class MinHeap(Heap):
@@ -87,9 +84,6 @@ class MinHeap(Heap):
         # This would be nLog(n) time due to the for-loop, but essentially it is much faster since max_heapify does log(N) work only for top node.
         for idx in range(self.heap_size // 2 - 1, -1, -1):
             self.min_heapify(idx)
-
-    def min_heapify(self):
-        self.min_heapify(0)
 
     def min_heapify(self, idx: int):
         # This step would be log(n) time since it is called from build_max_heap() and it turns out that the children are already max heaps
@@ -99,7 +93,7 @@ class MinHeap(Heap):
             smallest_idx = idx
             if left_idx < self.heap_size and self.array[left_idx] < self.array[idx]:
                 smallest_idx = left_idx
-            if right_idx < self.heap_size and self.array[right_idx] < self.array[largest_idx]:
+            if right_idx < self.heap_size and self.array[right_idx] < self.array[smallest_idx]:
                 smallest_idx = right_idx
 
             if smallest_idx != idx:
@@ -109,7 +103,7 @@ class MinHeap(Heap):
     def insert(self, num):
         # This would be log(N) time
         self.insert(num)
-        self.min_heapify()
+        self.min_heapify(0)
     
     def min(self):
         return self.array[0]
@@ -119,7 +113,7 @@ class MinHeap(Heap):
         self.array[0] = self.array[self.heap_size - 1]
         self.array.pop()
         self.heap_size -= 1
-        self.min_heapify()
+        self.min_heapify(0)
         return max_num
     
     def extract(self):

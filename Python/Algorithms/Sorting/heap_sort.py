@@ -1,13 +1,15 @@
 from typing import List
 
-from Algorithms.Sorting.sorting_factory import Sorter
+from Algorithms.Sorting.sorter import Sorter
 from DataStructures.heap import MaxHeap
 
 
 class HeapSort(Sorter):
-    def sort(self, array: List):
+    def sort(self, array: List) -> List:
+        array_size = len(array)
         heap = MaxHeap(array)
         heap.build_max_heap()
-        for idx in range(len(array)):
-            array[idx] = heap.extract_max()
-        return array
+        new_arr = []
+        for _ in range(array_size):
+            new_arr.append(heap.extract_max())
+        return new_arr

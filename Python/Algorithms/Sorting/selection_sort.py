@@ -1,10 +1,10 @@
 from typing import List
 
-from Algorithms.Sorting.sorting_factory import Sorter
+from Algorithms.Sorting.sorter import Sorter
 
 
 class SelectionSort(Sorter):
-    def sort(self, array: List):
+    def sort(self, array: List) -> List:
         array_size = len(array)
         for firstIdx in range(array_size - 1):
             minIdx = firstIdx
@@ -12,3 +12,5 @@ class SelectionSort(Sorter):
                 if array[secondIdx] < array[minIdx]:
                     minIdx = secondIdx
             self.swap(array, firstIdx, minIdx)
+        
+        return array

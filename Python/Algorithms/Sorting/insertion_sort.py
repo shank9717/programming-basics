@@ -1,10 +1,10 @@
 from typing import List
 
-from Algorithms.Sorting.sorting_factory import Sorter
+from Algorithms.Sorting.sorter import Sorter
 
 
 class InsertionSort(Sorter):
-    def sort(self, array: List):
+    def sort(self, array: List) -> List:
         array_size = len(array)
         for idx in range(1, array_size):
             key = array[idx]
@@ -13,3 +13,5 @@ class InsertionSort(Sorter):
                 array[position + 1] = array[position]
                 position -= 1
             array[position + 1] = key
+        
+        return array
