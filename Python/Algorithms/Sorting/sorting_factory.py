@@ -1,15 +1,14 @@
 from enum import Enum
-from typing import List
 
 from Algorithms.Sorting.bubble_sort import BubbleSort
+from Algorithms.Sorting.counting_sort import CountingSort
 from Algorithms.Sorting.insertion_sort import InsertionSort
 from Algorithms.Sorting.merge_sort import MergeSort
 from Algorithms.Sorting.quick_sort import QuickSort
+from Algorithms.Sorting.radix_sort import RadixSort
 from Algorithms.Sorting.selection_sort import SelectionSort
 from Algorithms.Sorting.heap_sort import HeapSort
 from Algorithms.Sorting.sorter import Sorter
-# from Algorithms.Sorting.counting_sort import CountingSort
-# from Algorithms.Sorting.radix_sort import RadixSort
 
 
 class SortingAlgorithm(Enum):
@@ -39,9 +38,9 @@ class SortingFactory():
             return QuickSort()
         elif sort_method == SortingAlgorithm.HEAP_SORT:
             return HeapSort()
-        # elif sort_method == SortingAlgorithm.COUNTING_SORT:
-        #     return CountingSort()
-        # elif sort_method == SortingAlgorithm.RADIX_SORT:
-        #     return RadixSort()
+        elif sort_method == SortingAlgorithm.COUNTING_SORT:
+            return CountingSort()
+        elif sort_method == SortingAlgorithm.RADIX_SORT:
+            return RadixSort()
         else:
             raise ValueError("Invalid sorting algorithm")

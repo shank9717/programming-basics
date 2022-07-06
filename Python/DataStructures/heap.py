@@ -30,10 +30,10 @@ class Heap:
         elif main_node.right is None:
             main_node.right = node
             return True
-        elif self.insert_node(main_node.left, node):
+        elif self._insert_node(main_node.left, node):
             return True
         else:
-            self.insert_node(main_node.right, node)
+            self._insert_node(main_node.right, node)
     
     def __repr__(self) -> str:
         return str(self.array)

@@ -4,6 +4,7 @@ from Algorithms.Sorting.sorter import Sorter
 
 
 class MergeSort(Sorter):
+    # This has complexity of O(N.log(N))
     def sort(self, array: List) -> List:
         array_size = len(array)
         if array_size <= 1:
@@ -19,11 +20,11 @@ class MergeSort(Sorter):
             self.merge(array, left, mid, right)
 
     @staticmethod
-    def merge(self, array: List, left: int, mid: int, right: int) -> None:
+    def merge(array: List, left: int, mid: int, right: int) -> None:
         left_arr = array[left:mid + 1]
         right_arr = array[mid + 1:right + 1]
         left_idx, right_idx = 0, 0
-        idx = left
+        idx = 0
         while left_idx < len(left_arr) and right_idx < len(right_arr):
             if left_arr[left_idx] < right_arr[right_idx]:
                 array[left + idx] = left_arr[left_idx]
@@ -34,9 +35,11 @@ class MergeSort(Sorter):
             idx += 1
         
         while left_idx < len(left_arr):
-            array[left + left_idx] = left_arr[left_idx]
+            array[left + idx] = left_arr[left_idx]
             left_idx += 1
+            idx += 1
         
         while right_idx < len(right_arr):
-            array[left + right_idx] = right_arr[right_idx]
+            array[left + idx] = right_arr[right_idx]
             right_idx += 1
+            idx += 1

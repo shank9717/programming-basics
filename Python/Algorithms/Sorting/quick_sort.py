@@ -4,6 +4,7 @@ from Algorithms.Sorting.sorter import Sorter
 
 
 class QuickSort(Sorter):
+    # This has complexity of O(N.log(N)) and is fastest in practice
     def sort(self, array: List) -> List:
         array_size = len(array)
         self.quick_sort(array, 0, array_size - 1)
