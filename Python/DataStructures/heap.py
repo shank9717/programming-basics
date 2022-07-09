@@ -1,5 +1,5 @@
 from typing import List
-from DataStructures.tree_node import BinaryTreeNode
+from DataStructures.node import BinaryTreeNode
 
 class Heap:
     def __init__(self, array: List):
