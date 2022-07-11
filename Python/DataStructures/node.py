@@ -6,16 +6,22 @@ class Node:
     def __init__(self, value: int):
         self.value = value
 
+    def __repr__(self):
+        return f'{self.value}'
+
+
 class LinkedListNode(Node):
-    def __init__(self, value: int, next: Node=None):
+    def __init__(self, value: int, next: Node = None):
         self.value = value
         self.next: LinkedListNode = next
 
+
 class DoubleLinkedListNode(Node):
-    def __init__(self, value: int, next: Node=None, previous: Node=None):
+    def __init__(self, value: int, next: Node = None, previous: Node = None):
         self.value = value
         self.next: DoubleLinkedListNode = next
         self.previous: DoubleLinkedListNode = previous
+
 
 class BinaryTreeNode(Node):
     def __init__(self, value: int, left: Node, right: Node):
@@ -23,8 +29,9 @@ class BinaryTreeNode(Node):
         self.left: BinaryTreeNode = left
         self.right: BinaryTreeNode = right
 
+
 class GraphNode(Node):
-    def __init__(self, value: int, neighbors: List[Node] = [], name: str=None):
+    def __init__(self, value: int, neighbors: List[Node] = [], name: str = None):
         self.name = NamedExpr
         self.value = value
         self.neighbors: List[GraphNode] = neighbors
