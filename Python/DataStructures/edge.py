@@ -5,23 +5,29 @@ class GraphEdge:
     def __init__(self, node_a: GraphNode, node_b: GraphNode):
         self.node_a = node_a
         self.node_b = node_b
+        self.directed = False
+        self.weight = 1
+
 
 class UndirectedGraphEdge(GraphEdge):
-    pass
+    def __init__(self, node_a: GraphNode, node_b: GraphNode):
+        super().__init__(node_a, node_b)
+        self.directed = False
+
 
 class DirectedGraphEdge(GraphEdge):
-    def __init__(self, start: GraphNode, end: GraphNode):
-        self.start = start
-        self.end = end
+    def __init__(self, node_a: GraphNode, node_b: GraphNode):
+        super().__init__(node_a, node_b)
+        self.directed = True
+
 
 class UndirectedGraphEdgeWeighted(UndirectedGraphEdge):
     def __init__(self, node_a: GraphNode, node_b: GraphNode, weight: int):
-        self.node_a = node_a
-        self.node_b = node_b
+        super().__init__(node_a, node_b)
         self.weight = weight
 
+
 class DirectedGraphEdgeWeighted(DirectedGraphEdge):
-    def __init__(self, start: GraphNode, end: GraphNode, weight: int):
-        self.start = start
-        self.end = end
+    def __init__(self, node_a: GraphNode, node_b: GraphNode, weight: int):
+        super().__init__(node_a, node_b)
         self.weight = weight
