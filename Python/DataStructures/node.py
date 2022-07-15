@@ -23,7 +23,7 @@ class DoubleLinkedListNode(Node):
 
 
 class BinaryTreeNode(Node):
-    def __init__(self, value: int, left: Node, right: Node):
+    def __init__(self, value: int, left: Node = None, right: Node = None):
         super().__init__(value)
         self.left: BinaryTreeNode = left
         self.right: BinaryTreeNode = right
