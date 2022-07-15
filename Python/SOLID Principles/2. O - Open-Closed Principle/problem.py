@@ -17,7 +17,7 @@ class Hike:
         self.employee = employee
         self.employee.current_salary = self.apply_increment()
 
-    def apply_increment(self):
+    def apply_increment(self) -> float:
         if self.employee.performance == 'Average':
             return self.employee.current_salary + (self.employee.current_salary * 0.05)
         if self.employee.performance == 'Good':

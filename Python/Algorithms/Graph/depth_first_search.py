@@ -12,7 +12,7 @@ class DepthFirstSearchGeneral:
                 self.parent[start_vertex] = None
                 self.dfs_visit(start_vertex)
 
-    def dfs_visit(self, vertex: GraphNode):
+    def dfs_visit(self, vertex: GraphNode) -> None:
         for neighbor in self.graph.adjacency_list[vertex]:
             if neighbor not in self.parent:
                 self.parent[neighbor] = vertex

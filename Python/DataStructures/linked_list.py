@@ -1,3 +1,5 @@
+from typing import Optional
+
 from DataStructures.node import Node
 from DataStructures.node import LinkedListNode
 
@@ -15,28 +17,28 @@ class LinkedList:
             current = current.next
         return count
 
-    def find(self, value: int) -> Node:
+    def find(self, value: int) -> Optional[Node]:
         current = self.root
         while current:
             if current.value == value:
                 return current
             current = current.next
-        return -1
+        return None
 
-    def insert_first(self, value: int):
+    def insert_first(self, value: int) -> None:
         new_node = LinkedListNode(value)
         new_node.next = self.root
         self.root = new_node
         self.size += 1
 
-    def insert_last(self, value: int):
+    def insert_last(self, value: int) -> None:
         current = self.root
         while current.next:
             current = current.next
         current.next = LinkedListNode(value)
         self.size += 1
 
-    def insert_after(self, value: int, after: int):
+    def insert_after(self, value: int, after: int) -> None:
         current = self.root
         while current:
             if current.value == after:
@@ -48,15 +50,15 @@ class LinkedList:
             current = current.next
         raise ValueError(f"Value not found: {after}")
 
-    def insert(self, value: int):
+    def insert(self, value: int) -> None:
         self.insert_last(value)
 
-    def delete_first(self):
+    def delete_first(self) -> None:
         next_node = self.root.next
         self.root = next_node
         self.size -= 1
 
-    def delete_last(self):
+    def delete_last(self) -> None:
         current = self.root
         if current.next is None:
             self.root = None

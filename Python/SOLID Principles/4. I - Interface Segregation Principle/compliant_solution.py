@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Employee:
     current_salary = 10
 
@@ -9,7 +12,7 @@ class Employee:
 
 
 class AverageEmployee(Employee):
-    def performance_benefits(self):
+    def performance_benefits(self) -> List:
         return ['Foo']
 
 
@@ -18,8 +21,8 @@ class GoodEmployee(AverageEmployee):
         super().__init__()
         self.performance = 'Good'
 
-    def performance_benefits(self):
-        raise ['Foo', 'Bar']
+    def performance_benefits(self) -> List:
+        return ['Foo', 'Bar']
 
 
 class OutstandingEmployee(AverageEmployee):
@@ -27,5 +30,5 @@ class OutstandingEmployee(AverageEmployee):
         super().__init__()
         self.performance = 'Outstanding'
 
-    def performance_benefits(self):
-        raise ['Foo', 'Bar', 'Max']
+    def performance_benefits(self) -> List:
+        return ['Foo', 'Bar', 'Max']

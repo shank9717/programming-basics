@@ -22,7 +22,7 @@ class PostgresDB:
     def connect(self):
         pass
 
-    def save(self, obj, table: str) -> bool:
+    def save(self, obj: object, table: str) -> bool:
         pass
 
 
@@ -30,7 +30,7 @@ class Employee:
     def __init__(self, name: str):
         self.name = name
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.name
 
     def save(self, db_connection: PostgresDB) -> bool:

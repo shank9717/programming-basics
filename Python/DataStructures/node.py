@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 
 class Node:
@@ -10,27 +10,27 @@ class Node:
 
 
 class LinkedListNode(Node):
-    def __init__(self, value: int, next: Node = None):
+    def __init__(self, value: int, next: Optional[Node] = None):
         super().__init__(value)
-        self.next: LinkedListNode = next
+        self.next: Optional[LinkedListNode] = next
 
 
 class DoubleLinkedListNode(Node):
-    def __init__(self, value: int, next: Node = None, previous: Node = None):
+    def __init__(self, value: int, next: Optional[Node] = None, previous: Optional[Node] = None):
         super().__init__(value)
-        self.next: DoubleLinkedListNode = next
-        self.previous: DoubleLinkedListNode = previous
+        self.next: Optional[DoubleLinkedListNode] = next
+        self.previous: Optional[DoubleLinkedListNode] = previous
 
 
 class BinaryTreeNode(Node):
-    def __init__(self, value: int, left: Node = None, right: Node = None):
+    def __init__(self, value: int, left: Optional[Node] = None, right: Optional[Node] = None):
         super().__init__(value)
-        self.left: BinaryTreeNode = left
-        self.right: BinaryTreeNode = right
+        self.left: Optional[BinaryTreeNode] = left
+        self.right: Optional[BinaryTreeNode] = right
 
 
 class GraphNode(Node):
-    def __init__(self, value: int, neighbors=None, name: str = None):
+    def __init__(self, value: int, neighbors: Optional[List[Node]] = None, name: str = None):
         super().__init__(value)
         if neighbors is None:
             neighbors = []

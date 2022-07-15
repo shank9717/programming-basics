@@ -33,7 +33,7 @@ class GoodEmployee(AverageEmployee):
         super().__init__(name)
         self.performance = 'Good'
 
-    def get_grade(self):
+    def get_grade(self) -> str:
         return f'{self} is a B grade employee'
 
 
@@ -42,7 +42,7 @@ class OutstandingEmployee(AverageEmployee):
         super().__init__(name)
         self.performance = 'Outstanding'
 
-    def get_grade(self):
+    def get_grade(self) -> str:
         return f'{self} is an A grade employee'
 
 

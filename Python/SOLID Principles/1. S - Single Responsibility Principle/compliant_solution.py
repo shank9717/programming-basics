@@ -11,7 +11,7 @@ class Employee:
 
 
 class EmployeeDB:
-    def get_user(self, id) -> Employee:
+    def get_user(self, id: int) -> Employee:
         pass
 
     def save(self, employee: Employee) -> bool:

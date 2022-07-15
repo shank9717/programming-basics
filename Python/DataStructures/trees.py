@@ -7,7 +7,7 @@ class BinaryTree:
     def __init__(self, root: BinaryTreeNode):
         self.root = root
 
-    def in_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []):
+    def in_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []) -> List[BinaryTreeNode]:
         if node is None:
             node = self.root
 
@@ -19,7 +19,7 @@ class BinaryTree:
 
         return nodes
 
-    def pre_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []):
+    def pre_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []) -> List[BinaryTreeNode]:
         if node is None:
             node = self.root
 
@@ -31,7 +31,7 @@ class BinaryTree:
 
         return nodes
 
-    def post_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []):
+    def post_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []) -> List[BinaryTreeNode]:
         if node is None:
             node = self.root
 
@@ -43,7 +43,7 @@ class BinaryTree:
 
         return nodes
 
-    def get_height(self, node: BinaryTreeNode = None, initiated: bool = False):
+    def get_height(self, node: BinaryTreeNode = None, initiated: bool = False) -> int:
         if node is None and not initiated:
             node = self.root
         elif node is None:

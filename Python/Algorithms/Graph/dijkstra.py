@@ -61,7 +61,7 @@ class Dijkstra:
         path = self.Path.calculate_path(self.distance, self.parent, self.start_vertex, target_vertex)
         return path
 
-    def extract_min(self, vertices: List[GraphNode]):
+    def extract_min(self, vertices: List[GraphNode]) -> GraphNode:
         min_vertex = vertices[0]
         for vertex in vertices:
             if self.distance[vertex] < self.distance[min_vertex]:

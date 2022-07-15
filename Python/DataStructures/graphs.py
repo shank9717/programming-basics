@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from DataStructures.edge import GraphEdge
 from DataStructures.node import GraphNode
@@ -11,19 +11,16 @@ class Graph:
         self.adjacency_list: Dict[GraphNode, List[GraphNode]] = {}
         self.update_adjacency_list()
 
-    def add_node(self, node: GraphNode, edges: List[GraphEdge]):
+    def add_node(self, node: GraphNode, edges: List[GraphEdge] = []) -> None:
         self.vertices.append(node)
         self.edges.extend(edges)
         self.update_adjacency_list()
 
-    def add_edge(self, edge: GraphEdge):
+    def add_edge(self, edge: GraphEdge) -> None:
         self.edges.append(edge)
         self.update_adjacency_list()
 
-    def add_node(self, node: GraphNode):
-        self.vertices.append(node)
-
-    def update_adjacency_list(self):
+    def update_adjacency_list(self) -> None:
         self.adjacency_list = {}
         for vertex in self.vertices:
             self.adjacency_list[vertex] = []
@@ -32,7 +29,7 @@ class Graph:
             if not edge.directed:
                 self.adjacency_list[edge.node_b].append(edge.node_a)
 
-    def get_edge(self, node_a: GraphNode, node_b: GraphNode):
+    def get_edge(self, node_a: GraphNode, node_b: GraphNode) -> Optional[GraphEdge]:
         for edge in self.edges:
             if edge.node_a == node_a and edge.node_b == node_b:
                 return edge

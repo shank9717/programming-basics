@@ -42,10 +42,10 @@ class BreadthFirstSearch:
         self.bfs(start_vertex, target_vertex)
         self.path = self.Path.calculate_path(self.parent, start_vertex, target_vertex)
 
-    def bfs(self, start_vertex: GraphNode, target_vertex: GraphNode):
+    def bfs(self, start_vertex: GraphNode, target_vertex: GraphNode) -> None:
         self.bfs_visit(start_vertex, target_vertex)
 
-    def bfs_visit(self, start_vertex: GraphNode, target_vertex: GraphNode):
+    def bfs_visit(self, start_vertex: GraphNode, target_vertex: GraphNode) -> None:
         self.visited[start_vertex] = True
         self.queue.append(start_vertex)
         current_level = 0
@@ -74,12 +74,12 @@ class BreadthFirstSearchGeneral:
         self.parent: Dict[GraphNode: int] = {}
         self.bfs()
 
-    def bfs(self):
+    def bfs(self) -> None:
         for start_vertex in self.graph.vertices:
             if start_vertex not in self.visited:
                 self.bfs_visit(start_vertex)
 
-    def bfs_visit(self, start_vertex: GraphNode):
+    def bfs_visit(self, start_vertex: GraphNode) -> None:
         self.visited[start_vertex] = True
         self.queue.append(start_vertex)
         current_level = 0

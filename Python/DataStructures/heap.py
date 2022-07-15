@@ -22,8 +22,9 @@ class Heap:
         num = self.array[0]
         self.array.remove(num)
         self.heap_size -= 1
+        return num
     
-    def _insert_node(self, main_node: BinaryTreeNode, node: BinaryTreeNode):
+    def _insert_node(self, main_node: BinaryTreeNode, node: BinaryTreeNode) -> bool:
         if main_node.left is None:
             main_node.left = node
             return True
@@ -40,12 +41,12 @@ class Heap:
     
 
 class MaxHeap(Heap):
-    def build_max_heap(self):
+    def build_max_heap(self) -> None:
         # This would be nLog(n) time due to the for-loop, but essentially it is much faster since max_heapify does log(N) work only for top node.
         for idx in range(self.heap_size // 2 - 1, -1, -1):
             self.max_heapify(idx)
 
-    def max_heapify(self, idx: int):
+    def max_heapify(self, idx: int) -> None:
         # This step would be log(n) time since it is called from build_max_heap() and it turns out that the children are already max heaps
         if idx < self.heap_size:
             left_idx = 2 * idx + 1
@@ -60,7 +61,7 @@ class MaxHeap(Heap):
                 self.array[idx], self.array[largest_idx] = self.array[largest_idx], self.array[idx]
                 self.max_heapify(largest_idx)
 
-    def insert(self, num):
+    def insert(self, num) -> None:
         # This would be log(N) time
         self.insert(num)
         self.max_heapify(0)
@@ -80,12 +81,12 @@ class MaxHeap(Heap):
         return max_num
     
 class MinHeap(Heap):
-    def build_min_heap(self):
+    def build_min_heap(self) -> None:
         # This would be nLog(n) time due to the for-loop, but essentially it is much faster since max_heapify does log(N) work only for top node.
         for idx in range(self.heap_size // 2 - 1, -1, -1):
             self.min_heapify(idx)
 
-    def min_heapify(self, idx: int):
+    def min_heapify(self, idx: int) -> None:
         # This step would be log(n) time since it is called from build_max_heap() and it turns out that the children are already max heaps
         if idx < self.heap_size:
             left_idx = 2 * idx + 1
@@ -100,7 +101,7 @@ class MinHeap(Heap):
                 self.array[idx], self.array[smallest_idx] = self.array[smallest_idx], self.array[idx]
                 self.min_heapify(smallest_idx)
 
-    def insert(self, num):
+    def insert(self, num) -> None:
         # This would be log(N) time
         self.insert(num)
         self.min_heapify(0)

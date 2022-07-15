@@ -7,6 +7,8 @@
 
 # In the below example, by creating separate methods in base class (Employee) for different performance benefits,
 # we are forcing each implementation class to implement all 3 methods, which breaks this principle.
+from typing import Optional, List
+
 
 class Employee:
     current_salary = 10
@@ -14,26 +16,26 @@ class Employee:
     def __init__(self):
         self.performance = 'Average'
 
-    def average_performance_benefits(self):
+    def average_performance_benefits(self) -> Optional[List]:
         raise NotImplementedError()
 
-    def good_performance_benefits(self):
+    def good_performance_benefits(self) -> Optional[List]:
         raise NotImplementedError()
 
-    def outstanding_performance_benefits(self):
+    def outstanding_performance_benefits(self) -> Optional[List]:
         raise NotImplementedError()
 
 
 class AverageEmployee(Employee):
 
-    def average_performance_benefits(self):
+    def average_performance_benefits(self) -> Optional[List]:
         return ['Foo']
 
-    def good_performance_benefits(self):
-        raise None
+    def good_performance_benefits(self) -> Optional[List]:
+        return None
 
-    def outstanding_performance_benefits(self):
-        raise None
+    def outstanding_performance_benefits(self) -> Optional[List]:
+        return None
 
 
 class GoodEmployee(AverageEmployee):
@@ -41,14 +43,14 @@ class GoodEmployee(AverageEmployee):
         super().__init__()
         self.performance = 'Good'
 
-    def average_performance_benefits(self):
+    def average_performance_benefits(self) -> Optional[List]:
         return None
 
-    def good_performance_benefits(self):
+    def good_performance_benefits(self) -> Optional[List]:
         raise ['Foo', 'Bar']
 
-    def outstanding_performance_benefits(self):
-        raise None
+    def outstanding_performance_benefits(self) -> Optional[List]:
+        return None
 
 
 class OutstandingEmployee(AverageEmployee):
