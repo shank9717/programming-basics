@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 from DataStructures.node import BinaryTreeNode
 
@@ -19,7 +19,8 @@ class BinaryTree:
 
         return nodes
 
-    def pre_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []) -> List[BinaryTreeNode]:
+    def pre_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []) -> \
+            List[BinaryTreeNode]:
         if node is None:
             node = self.root
 
@@ -31,7 +32,8 @@ class BinaryTree:
 
         return nodes
 
-    def post_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []) -> List[BinaryTreeNode]:
+    def post_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []) -> \
+            List[BinaryTreeNode]:
         if node is None:
             node = self.root
 
@@ -40,6 +42,53 @@ class BinaryTree:
         if node.right:
             self.post_order_traversal(node.right, nodes)
         nodes.append(node)
+
+        return nodes
+
+    def level_order_traversal_helper(self, node: BinaryTreeNode, current_level: int, levels: List[int],
+                                     level_nodes: Dict[int, List[BinaryTreeNode]]) -> List[int]:
+
+        if current_level in level_nodes:
+            level_nodes[current_level].append(node)
+        else:
+            level_nodes[current_level] = [node]
+        if not current_level in levels:
+            levels.append(current_level)
+
+        if node.left is not None:
+            self.level_order_traversal_helper(node.left, current_level + 1, levels, level_nodes)
+        if node.right is not None:
+            self.level_order_traversal_helper(node.right, current_level + 1, levels, level_nodes)
+
+        return levels
+
+    def level_order_traversal(self, node: BinaryTreeNode = None, nodes: List[BinaryTreeNode] = []) -> \
+            List[BinaryTreeNode]:
+        if node is None:
+            node = self.root
+
+        current_level = 0
+        level_nodes = {}
+
+        levels = self.level_order_traversal_helper(node, current_level, [], level_nodes)
+
+        for level in range(max(levels) + 1):
+            nodes.extend(level_nodes[level])
+
+        return nodes
+
+    def left_view(self, node: BinaryTreeNode = None) -> List[BinaryTreeNode]:
+        if node is None:
+            node = self.root
+
+        nodes: List[BinaryTreeNode] = []
+        current_level = 0
+        level_nodes = {}
+
+        levels = self.level_order_traversal_helper(node, current_level, [], level_nodes)
+
+        for level in range(max(levels) + 1):
+            nodes.append(level_nodes[level][0])
 
         return nodes
 
