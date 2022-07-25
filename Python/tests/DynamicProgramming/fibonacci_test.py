@@ -5,7 +5,7 @@ from unittest import TestCase
 from Algorithms.DynamicProgramming.fibonacci import FibonacciTopDown, FibonacciBottomUp, FibonacciMemoized
 
 
-class TestSearchingAlgorithms(TestCase):
+class TestFibonacciAlgorithms(TestCase):
 
     def setUp(self) -> None:
         self.top_down = FibonacciTopDown()
