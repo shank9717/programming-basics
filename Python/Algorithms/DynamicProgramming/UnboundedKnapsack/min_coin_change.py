@@ -13,7 +13,7 @@ from typing import List
 class MinCoinChange:
 
     @staticmethod
-    def get_min_coins(denominations: List[int], target_amount: int):
+    def get_min_coins(denominations: List[int], target_amount: int) -> int:
         dp = [float('inf')] * (target_amount + 1)
         dp[0] = 0
         for coin in denominations:

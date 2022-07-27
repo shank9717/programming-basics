@@ -14,7 +14,7 @@ from typing import List
 
 class CoinChangePermutations:
     @staticmethod
-    def get_permutations(denominations: List[int], target_amount: int):
+    def get_permutations(denominations: List[int], target_amount: int) -> int:
         dp = [0] * (target_amount + 1)
         dp[0] = 1
         for amount in range(target_amount + 1):

@@ -13,7 +13,7 @@ from typing import List
 
 class RodCutting:
     @staticmethod
-    def max_price(prices: List[int]):
+    def max_price(prices: List[int]) -> int:
         rod_size = len(prices)
         max_prices = [0] * (rod_size + 1)
         for sub_size in range(1, rod_size + 1):

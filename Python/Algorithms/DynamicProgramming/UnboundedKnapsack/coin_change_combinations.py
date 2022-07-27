@@ -12,7 +12,7 @@ from typing import List
 
 class CoinChangeCombinations:
     @staticmethod
-    def get_combinations(denominations: List[int], target_amount: int):
+    def get_combinations(denominations: List[int], target_amount: int) -> int:
         dp = [0] * (target_amount + 1)
         dp[0] = 1
         for coin in denominations:
