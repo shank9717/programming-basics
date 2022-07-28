@@ -15,7 +15,7 @@ class SubsetSum:
     def subset_sum(self, numbers: List[int], target: int,
                    idx: int = 0, current_sum: int = 0, memo: Dict[Tuple[int, int], bool] = {}) -> bool:
         if (idx, current_sum) in memo:
-            return
+            return memo[(idx, current_sum)]
         if current_sum == target:
             memo[(idx, current_sum)] = True
             return True
