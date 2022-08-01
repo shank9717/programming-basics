@@ -2,7 +2,7 @@ import math
 import unittest
 from unittest import TestCase
 
-from Algorithms.Graph.breadth_first_search import BreadthFirstSearch
+from Algorithms.Graph.breadth_first_search import BreadthFirstSearch, BidirectionalBreadthFirstSearch
 from DataStructures.edge import DirectedGraphEdge, UndirectedGraphEdge
 from DataStructures.graphs import Graph
 from DataStructures.node import GraphNode
@@ -64,6 +64,22 @@ class TestBFSAlgorithmUndirectedGraph(TestCase):
         bfs = BreadthFirstSearch(self.graph, self.nodes[3], self.nodes[4])
         self.assertEqual(1, bfs.path.path_length)
         self.assertListEqual([self.nodes[3], self.nodes[4]], list(bfs.path.route))
+
+    def test_bidirectional_bfs(self):
+        bfs = BidirectionalBreadthFirstSearch(self.graph, self.nodes[3], self.nodes[4])
+        self.assertEqual(1, bfs.path.path_length)
+        self.assertListEqual([self.nodes[3], self.nodes[4]], list(bfs.path.route))
+
+    def test_bidirectional_bfs_2(self):
+        bfs = BidirectionalBreadthFirstSearch(self.graph, self.nodes[1], self.nodes[5])
+        self.assertEqual(2, bfs.path.path_length)
+        self.assertListEqual([self.nodes[1], self.nodes[6], self.nodes[5]], list(bfs.path.route))
+
+    def test_bidirectional_bfs_3(self):
+        bfs = BidirectionalBreadthFirstSearch(self.graph, self.nodes[0], self.nodes[4])
+        self.assertEqual(4, bfs.path.path_length)
+        self.assertListEqual([self.nodes[0], self.nodes[2], self.nodes[6], self.nodes[3], self.nodes[4]],
+                             list(bfs.path.route))
 
 
 if __name__ == '__main__':
