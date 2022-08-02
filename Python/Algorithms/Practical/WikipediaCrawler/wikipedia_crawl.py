@@ -1,9 +1,5 @@
-import cProfile
-import time
-
-import lxml
-import cchardet
 import math
+import time
 from collections import deque
 from typing import Dict, List, Callable, Tuple
 
@@ -28,7 +24,7 @@ class WikipediaNode:
             self.session = requests.Session()
 
     @staticmethod
-    def removeprefix(text: str, prefix: str) -> str:
+    def remove_prefix(text: str, prefix: str) -> str:
         return text[text.startswith(prefix) and len(prefix):]
 
     def get_title(self) -> str:
@@ -65,7 +61,7 @@ class WikipediaNode:
         urls = list(filter(is_wiki_url, urls))
 
         for url in urls:
-            sub_path = self.removeprefix(url, '/wiki/')
+            sub_path = self.remove_prefix(url, '/wiki/')
             if any(sub_path.startswith(skip_prefix) for skip_prefix in self.other_link_prefixes):
                 continue
             complete_url = self.WIKIPEDIA_URL_PREFIX + url
@@ -85,6 +81,7 @@ class WikipediaNode:
 
     def __hash__(self) -> int:
         return hash(self.get_title())
+
 
 class BreadthFirstSearch:
     class Path:
@@ -127,26 +124,22 @@ class BreadthFirstSearch:
     def bfs_visit(self, start_vertex: WikipediaNode, target_vertex: WikipediaNode) -> None:
         self.visited[start_vertex] = True
         self.queue.append(start_vertex)
-        current_level = 0
         while self.queue:
             current_vertex = self.queue.pop(0)
             for neighbor in current_vertex.get_adjacent_nodes():
                 if neighbor == target_vertex:
                     self.visited[neighbor] = True
                     self.parent[neighbor] = current_vertex
-                    self.level[neighbor] = current_level
                     return
                 if not neighbor in self.visited or not self.visited[neighbor]:
                     self.visited[neighbor] = True
-                    self.level[neighbor] = current_level
                     self.parent[neighbor] = current_vertex
                     self.queue.append(neighbor)
                 if len(self.visited) % 30 == 0:
                     print(f'Nodes visited: {len(self.visited)}')
-            current_level += 1
 
 
-if __name__ == '__main__':
+def main():
     breadth_first_search = BreadthFirstSearch()
     start_time = time.time()
     path = breadth_first_search.bfs(WikipediaNode('https://en.wikipedia.org/wiki/Martin_Demaine'),
@@ -155,3 +148,7 @@ if __name__ == '__main__':
     print(f'Time taken: {time.time() - start_time} seconds')
     print(f'Nodes visited: {len(breadth_first_search.visited)}')
     print(path)
+
+
+if __name__ == '__main__':
+    main()
