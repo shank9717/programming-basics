@@ -24,7 +24,7 @@ class CountingSort(Sorter):
         return array
 
     @staticmethod
-    def find_max(array: List):
+    def find_max(array: List) -> int:
         max_num = -1 * math.inf
         for num in array:
             if num > max_num:

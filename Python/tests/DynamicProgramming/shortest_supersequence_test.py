@@ -5,7 +5,7 @@ from Algorithms.DynamicProgramming.LongestCommonSubstring.shortest_common_supers
     ShortestCommonSupersequence
 
 
-class TestLongestCommonSubsequence(TestCase):
+class TestShortestCommonSupersequence(TestCase):
     def setUp(self) -> None:
         self.scs = ShortestCommonSupersequence()
 

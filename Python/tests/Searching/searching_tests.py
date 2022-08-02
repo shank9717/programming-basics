@@ -9,10 +9,9 @@ from Algorithms.Searching.searching_factory import SearchingFactory, NumberSearc
 class TestSearchingAlgorithms(TestCase):
 
     def setUp(self) -> None:
-        factory = SearchingFactory()
         self.searching_classes: List[Searcher] = [
-            factory.get_search(NumberSearchingAlgorithm.LINEAR_SEARCH),
-            factory.get_search(NumberSearchingAlgorithm.BINARY_SEARCH)
+            SearchingFactory.get_search(NumberSearchingAlgorithm.LINEAR_SEARCH),
+            SearchingFactory.get_search(NumberSearchingAlgorithm.BINARY_SEARCH)
         ]
 
     def test_search_single_value(self):

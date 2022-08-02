@@ -21,11 +21,10 @@ class SortingAlgorithm(Enum):
     COUNTING_SORT = 7
     RADIX_SORT = 8
 
-class SortingFactory():
-    def __init__(self):
-        pass
+class SortingFactory:
 
-    def get_sort(self, sort_method: SortingAlgorithm) -> Sorter:
+    @staticmethod
+    def get_sort(sort_method: SortingAlgorithm) -> Sorter:
         if sort_method == SortingAlgorithm.BUBBLE_SORT:
             return BubbleSort()
         elif sort_method == SortingAlgorithm.SELECTION_SORT:

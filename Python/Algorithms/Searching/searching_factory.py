@@ -10,8 +10,6 @@ class NumberSearchingAlgorithm(Enum):
     BINARY_SEARCH = 2
 
 class SearchingFactory:
-    def __init__(self):
-        pass
 
     @staticmethod
     def get_search(search_method: NumberSearchingAlgorithm) -> Searcher:

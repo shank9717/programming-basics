@@ -9,15 +9,14 @@ from Algorithms.Sorting.sorting_factory import SortingAlgorithm, SortingFactory
 class TestSortingAlgorithms(TestCase):
 
     def setUp(self) -> None:
-        factory = SortingFactory()
         self.sorting_classes: List[Sorter] = [
-            factory.get_sort(SortingAlgorithm.BUBBLE_SORT),
-            factory.get_sort(SortingAlgorithm.SELECTION_SORT),
-            factory.get_sort(SortingAlgorithm.INSERTION_SORT),
-            factory.get_sort(SortingAlgorithm.MERGE_SORT),
-            factory.get_sort(SortingAlgorithm.QUICK_SORT),
-            factory.get_sort(SortingAlgorithm.HEAP_SORT),
-            factory.get_sort(SortingAlgorithm.COUNTING_SORT),
+            SortingFactory.get_sort(SortingAlgorithm.BUBBLE_SORT),
+            SortingFactory.get_sort(SortingAlgorithm.SELECTION_SORT),
+            SortingFactory.get_sort(SortingAlgorithm.INSERTION_SORT),
+            SortingFactory.get_sort(SortingAlgorithm.MERGE_SORT),
+            SortingFactory.get_sort(SortingAlgorithm.QUICK_SORT),
+            SortingFactory.get_sort(SortingAlgorithm.HEAP_SORT),
+            SortingFactory.get_sort(SortingAlgorithm.COUNTING_SORT),
             # factory.get_sort(SortingAlgorithm.RADIX_SORT)
         ]
 

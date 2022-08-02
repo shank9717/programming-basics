@@ -4,7 +4,7 @@ from unittest import TestCase
 from Algorithms.DynamicProgramming.UnboundedKnapsack.coin_change_permutations import CoinChangePermutations
 
 
-class TestCoinChangeCombinations(TestCase):
+class TestCoinChangePermutations(TestCase):
     def setUp(self) -> None:
         self.coin_change = CoinChangePermutations()
 

@@ -77,24 +77,24 @@ class WikipediaNode:
     def check_url_equality(url1: str, url2: str) -> bool:
         return url1 == url2
 
-    def __eq__(self, other: 'WikipediaNode'):
+    def __eq__(self, other: 'WikipediaNode') -> bool:
         return self.check_url_equality(self.url, other.url)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'{self.get_title()} ({self.url})'
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.get_title())
 
 class BreadthFirstSearch:
     class Path:
-        def __init__(self, route: Tuple[WikipediaNode] = None, path_length: int = math.inf):
+        def __init__(self, route: Tuple[WikipediaNode] = None, path_length: int = math.inf) -> None:
             self.route = route
             self.path_length = path_length
 
         @staticmethod
         def calculate_path(parents: Dict[WikipediaNode, WikipediaNode],
-                           start_vertex: WikipediaNode, target_vertex: WikipediaNode):
+                           start_vertex: WikipediaNode, target_vertex: WikipediaNode) -> 'BreadthFirstSearch.Path':
             path = BreadthFirstSearch.Path()
             route = deque()
             current_vertex = target_vertex
@@ -111,10 +111,10 @@ class BreadthFirstSearch:
             path.path_length = math.inf
             return path
 
-        def __repr__(self):
+        def __repr__(self) -> str:
             return ' -> '.join([str(path_node) for path_node in self.route]) if self.route is not None else 'None'
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.visited: Dict[WikipediaNode, bool] = {}
         self.queue: List[WikipediaNode] = []
         self.level: Dict[WikipediaNode, int] = {}
@@ -146,11 +146,12 @@ class BreadthFirstSearch:
             current_level += 1
 
 
-breadth_first_search = BreadthFirstSearch()
-start_time = time.time()
-path = breadth_first_search.bfs(WikipediaNode('https://en.wikipedia.org/wiki/Martin_Demaine'),
-                                WikipediaNode('https://en.wikipedia.org/wiki/Minimax'))
+if __name__ == '__main__':
+    breadth_first_search = BreadthFirstSearch()
+    start_time = time.time()
+    path = breadth_first_search.bfs(WikipediaNode('https://en.wikipedia.org/wiki/Martin_Demaine'),
+                                    WikipediaNode('https://en.wikipedia.org/wiki/Minimax'))
 
-print(f'Time taken: {time.time() - start_time} seconds')
-print(f'Nodes visited: {len(breadth_first_search.visited)}')
-print(path)
+    print(f'Time taken: {time.time() - start_time} seconds')
+    print(f'Nodes visited: {len(breadth_first_search.visited)}')
+    print(path)
