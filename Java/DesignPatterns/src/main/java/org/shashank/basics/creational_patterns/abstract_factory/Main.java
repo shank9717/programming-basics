@@ -18,7 +18,6 @@ public class Main {
         runApplication(mobile);
     }
 
-
     static void configure() {
         String osType = System.getProperty("os.type");
         if (osType != null && osType.equals("Android")) {
