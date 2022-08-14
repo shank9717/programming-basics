@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ExportChatVisitor implements Visitor {
 
-    public String exportAll(Chat... chats) {
+    public String exportAll(List<Chat> chats) {
         StringBuilder sb = new StringBuilder();
         sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + "\n");
         for (Chat chat : chats) {

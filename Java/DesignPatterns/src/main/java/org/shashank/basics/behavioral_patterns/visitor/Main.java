@@ -33,12 +33,7 @@ public class Main {
         );
 
         ExportChatVisitor visitor = new ExportChatVisitor();
-        String exportedXml = visitor.exportAll(shashank,
-                john,
-                tempGroup,
-                anonymous,
-                broadcastChat
-        );
+        String exportedXml = visitor.exportAll(app.getAllChats());
         System.out.println("Exported XML: \n" + exportedXml);
     }
 }

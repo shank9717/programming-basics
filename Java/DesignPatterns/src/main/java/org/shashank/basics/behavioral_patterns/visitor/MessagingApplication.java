@@ -15,4 +15,9 @@ public class MessagingApplication {
         }
         allChats.addAll(Arrays.asList(chats));
     }
+
+    public List<Chat> getAllChats() {
+        return allChats;
+    }
+
 }
